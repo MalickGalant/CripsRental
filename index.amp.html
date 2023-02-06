@@ -1,0 +1,26 @@
+<!-- Set up the amp-geo component to detect end users from the US amp-geo only supports country level geo detection now, but US states detection is coming soon. Please make sure that you handle the case “unknown” when the country cannot be determined by amp-geo, and have at least one group contain the “unknown” -->
+<amp-geo layout=nodisplay>
+  <script type="application/json">
+    {
+      "ISOCountryGroups": {
+        "us": ["us"],
+        "eea": ["preset-eea", “unknown”]
+      }
+    }
+  </script>
+</amp-geo>
+
+<!-- Set up the amp-consent component to block requests and collect user consents. We'll later configure it to be auto-rejected, so it doesn't actually prompt for consent. This prevents RTC callouts and signals Ad Manager/AdSense to serve non-personalised ads. -->
+<amp-consent layout="nodisplay" id="consent-element">
+  <script type="application/json">
+    {
+     “consentInstanceId”: “my_consent”,
+      “consentRequire”: false,
+“geoOverride”: {
+  “us”: {
+    “consentRequired”: “remote”,
+    “checkConsentHref”: “https://your-endpoint” 
+  }
+}     
+  </script>
+</amp-consent>
