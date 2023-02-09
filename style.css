@@ -31,3 +31,26 @@ html,body{padding:0;margin:0;}
 @media(min-width: 130px){		.verticalBanner		{	width:120px;height:600px;	}}	/* AR:  0.2 */
 @media(min-width: 160px){		.verticalBanner		{	width:160px;height:600px;	}}	/* AR:  0.2 */
 @media(min-width: 300px){		.verticalBanner		{	width:300px;height:600px;	}}	/* AR:  0.5 */
+@media (prefers-reduced-motion:no-preference) {
+  [word-animation] {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1ch
+  }
+}
+
+@media (prefers-reduced-motion:no-preference) and (hover) {
+  [word-animation=hover] {
+    overflow: hidden;
+    overflow: clip
+  }
+
+  [word-animation=hover]>span {
+    transition: transform .3s ease;
+    cursor: pointer
+  }
+
+  [word-animation=hover]>span:not(:hover) {
+    transform: translateY(50%)
+  }
+}
